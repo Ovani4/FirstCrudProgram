@@ -1,4 +1,4 @@
-package src.main.java.com.ovani4.crudprogram.controller;
+package src.main.java.com.ovani4.crudprogram.repository;
 
 import src.main.java.com.ovani4.crudprogram.repository.RegionRepository;
 
