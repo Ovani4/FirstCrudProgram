@@ -1,4 +1,4 @@
-package src.main.java.com.ovani4.crudprogram.model;
+package main.java.com.ovani4.crudprogram.model;
 
 import java.util.Date;
 

@@ -1,8 +1,7 @@
-package src.main.java.com.ovani4.crudprogram.model;
+package main.java.com.ovani4.crudprogram.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 
 public class User {

@@ -1,6 +1,6 @@
-package src.main.java.com.ovani4.crudprogram;
+package main.java.com.ovani4.crudprogram;
 
-import src.main.java.com.ovani4.crudprogram.view.CrudStart;
+import main.java.com.ovani4.crudprogram.view.CrudStart;
 
 public class Main {
     public static void main(String[] args) {
