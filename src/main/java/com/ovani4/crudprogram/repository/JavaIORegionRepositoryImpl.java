@@ -42,7 +42,7 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
     public Region getById(Integer integer) {
         Region region = new Region();
         try {
-            br = new BufferedReader(new FileReader("/data/regions.txt"));
+            br = new BufferedReader(new FileReader("data/regions.txt"));
             String s;
             String [] sm;
             while ((s = br.readLine()) != null){
@@ -69,7 +69,7 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
     @Override
     public Region save(Region region) {
         try {
-            bw = new BufferedWriter(new FileWriter("regions.txt"));
+            bw = new BufferedWriter(new FileWriter("src/data/regions.txt"));
             bw.write(region.getId() + " " + region.getName());
             bw.flush();
             bw.close();
@@ -86,6 +86,22 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
 
     @Override
     public void deleteById(Integer integer) {
+        String s;
+        String[] sm;
+        try {
+            br = new BufferedReader(new FileReader("src/data/regions.txt"));
+            while ((s = br.readLine())!= null){
+                sm = s.split(" ");
+                if (sm[0].equals(integer)){
+                    //удалить строку
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
