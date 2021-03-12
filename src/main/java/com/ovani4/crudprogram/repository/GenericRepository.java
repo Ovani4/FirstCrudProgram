@@ -1,5 +1,7 @@
 package main.java.com.ovani4.crudprogram.repository;
 
+import main.java.com.ovani4.crudprogram.model.Region;
+
 import java.util.List;
 
 public interface GenericRepository <T , ID>{
@@ -8,4 +10,5 @@ public interface GenericRepository <T , ID>{
     T save(T t);
     T update(T t);
     void deleteById(ID id);
+    public List<Region> getListFromFile( String filePath);
 }
