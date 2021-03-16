@@ -54,14 +54,8 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
     @Override
     public void deleteById(Integer integer) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_REGIONS))) {
-            getListFromFile(FILE_PATH_REGIONS).stream().
-                    filter(region -> region.getId() != integer).forEach(region -> {
-                try {
-                    bw.write(region.getId().toString() + " " + region.getName() + "\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            getListFromFile(FILE_PATH_REGIONS).remove(getListFromFile(FILE_PATH_REGIONS).
+                    stream().filter(region -> region.getId().equals(integer)));
         }catch (IOException e){
             System.err.println("error in delete region by ID");
         }
