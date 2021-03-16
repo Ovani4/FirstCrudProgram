@@ -32,8 +32,8 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
 
     }
 
-    @Override
-    public List<Region> getListFromFile(String filePath) {
+
+    private List<User> getListFromFile(String filePath) {
         return null;
     }
 

@@ -10,5 +10,8 @@ public interface GenericRepository <T , ID>{
     T save(T t);
     T update(T t);
     void deleteById(ID id);
-    public List<Region> getListFromFile( String filePath);
+
+    private List<T> getListFromFile(String filePath) {
+        return null;
+    }
 }

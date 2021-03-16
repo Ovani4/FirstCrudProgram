@@ -32,8 +32,8 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
 
     }
 
-    @Override
-    public List<Region> getListFromFile(String filePath) {
+
+    private List<Post> getListFromFile(String filePath) {
         return null;
     }
     // реализация для методов для создания и редактирование post.txt

@@ -2,11 +2,10 @@ package main.java.com.ovani4.crudprogram.repository.imp;
 
 import main.java.com.ovani4.crudprogram.model.Region;
 import main.java.com.ovani4.crudprogram.repository.RegionRepository;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
+
 
 
 public class JavaIORegionRepositoryImpl implements RegionRepository {
@@ -18,26 +17,19 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
     }
 
     @Override
-    public Region getById(Integer integer) { //Иначе не додумался как из потока объект вытащить
-        //попробовать вытащить Object  и привести его к Region...
+    public Region getById(Integer integer) {
 
-        Region[] regions = (Region[]) getListFromFile(FILE_PATH_REGIONS).stream().
-                filter(r -> r.equals(integer)).toArray();
-
-        return regions[0];
+        return getListFromFile(FILE_PATH_REGIONS).stream().
+                filter(r -> r.getId().equals(integer)).findFirst().orElse(null);
     }
 
     @Override
-    public Region save(Region region) {//додумался так, но тоже как то странновато...
+    public Region save(Region region) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_REGIONS))) {
             getListFromFile(FILE_PATH_REGIONS).add(region);
-            getListFromFile(FILE_PATH_REGIONS).stream().forEach(region1 -> {
-                try {
-                    bw.write(region1.getId().toString() + " " + region1.getName() + "\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            for (Region region1 : getListFromFile(FILE_PATH_REGIONS)) {
+                bw.write(region1.getId().toString() + " " + region1.getName() + "\n");
+            }
         } catch (IOException e) {
             System.err.println("error in create region");
         }
@@ -48,9 +40,11 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
     public Region update(Region region) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_REGIONS))) {
             getListFromFile(FILE_PATH_REGIONS).stream().
-                    filter(region1 -> region.getId().equals(region)).forEach(region1 -> {
-                        //Еще не придумал, как зменить объект в потоке)
-            });
+                    filter(region1 -> region1.getId().equals(region.getId())).
+                    forEach(region1 -> region1.setName(region.getName()));
+            for (Region region1 : getListFromFile(FILE_PATH_REGIONS)) {
+                bw.write(region1.getId().toString() + " " + region1.getName());
+            }
         }catch (IOException e){
             System.err.println("error in update region");
         }
@@ -73,7 +67,7 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
         }
     }
 
-    public List<Region> getListFromFile(String filePath) {
+    private List<Region> getListFromFile(String filePath) {
         String s;
         String[] sm;
         List<Region> regions = new ArrayList<>();
@@ -90,4 +84,5 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
         }
         return regions;
     }
+
 }
