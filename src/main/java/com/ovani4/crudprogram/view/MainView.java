@@ -12,10 +12,11 @@ public class MainView {
         int choice;
         boolean have_choice = true;
         System.out.println("Программа запущена.");
-        System.out.println("Для работы с User введи 1;\n" +
-                "Для работы с Region введи 2;\n" +
-                "Для работы с Post введи 3;" +
-                "Для выхода введи 0;");
+        System.out.println(new StringBuilder().
+                append("Для работы с User введи 1;\n").
+                append("Для работы с Region введи 2;\n").
+                append("Для работы с Post введи 3;").
+                append("Для выхода введи 0;").toString());
         while (have_choice) {
             choice = scan.nextInt();
             switch (choice) {
@@ -32,11 +33,11 @@ public class MainView {
                     System.out.println("Закрытие программы...");
                     break;
                 default:
-                    System.out.println("Для работы с User введи 1;\n" +
-                            "Для работы с Region введи 2;\n" +
-                            "Для работы с Post введи 3;\n" +
-                            "Для выхода введи 0;");
-                    have_choice = false;
+                    System.out.println(new StringBuilder().
+                            append("Для работы с User введи 1;\n").
+                            append("Для работы с Region введи 2;\n").
+                            append("Для работы с Post введи 3;\n").
+                            append("Для выхода введи 0;").toString());
             }
         }
     }

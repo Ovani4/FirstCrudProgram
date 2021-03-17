@@ -62,6 +62,7 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
         }catch (IOException e){
             System.err.println("error in delete region by ID");
         }
+        System.out.println("Объект удален.");
     }
 
     private List<Region> getListFromFile(String filePath) {
