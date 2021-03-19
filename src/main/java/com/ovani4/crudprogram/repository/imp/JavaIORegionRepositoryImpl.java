@@ -41,7 +41,7 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_REGIONS))) {
             getListFromFile(FILE_PATH_REGIONS).stream().
                     filter(region1 -> region1.getId().equals(region.getId())).
-                    forEach(region1 -> region1.setName(region.getName()));
+                    forEach(region1 -> region1.setName(region.getName()));// изменения не происходит
             for (Region region1 : getListFromFile(FILE_PATH_REGIONS)) {
                 bw.write(region1.getId().toString() + " " + region1.getName());
             }
