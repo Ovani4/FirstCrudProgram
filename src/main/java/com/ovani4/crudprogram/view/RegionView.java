@@ -8,6 +8,7 @@ public class RegionView {
     public RegionView() {
         RegionController rc = new RegionController();
         Scanner scan = new Scanner(System.in);
+        boolean bool = true;
         int choice;
         System.out.println("Работаем с Region...");
         System.out.println(new StringBuilder().
@@ -15,9 +16,11 @@ public class RegionView {
                 append("Для удаления Region по id введи 2;\n").
                 append("Для получения информации о Region по id введи 3;\n").
                 append("Для обновления информации Region по id введи 4;\n").
-                append("Для получения списков всех Region введи 5;").toString());
-        choice = scan.nextInt();
-        while (true) {
+                append("Для получения списков всех Region введи 5;\n").
+                append("Для возврата в предыдущее меню введи 0;").toString());
+
+        while (bool) {
+            choice = scan.nextInt();
             switch (choice) {
                 case 1:
                     Region region = new Region();
@@ -41,14 +44,22 @@ public class RegionView {
                     System.out.println("Введи новое имя Region:");
                     region1.setName(scan.nextLine());
                     rc.update(region1);
+                    break;
+                case 5:
+                    System.out.println(rc.getAll().toString());
+                    break;
                 case 0:
-                    System.out.println("Закрытие программы...");
+                    MainView mv = new MainView();
+                    bool = false;
                     break;
                 default:
-                    System.out.println("Для работы с User введи 1;\n" +
-                            "Для работы с Region введи 2;\n" +
-                            "Для работы с Post введи 3;" +
-                            "Для выхода введи 0;");
+                    System.out.println(new StringBuilder().
+                            append("Для создания Region введи 1;\n").
+                            append("Для удаления Region по id введи 2;\n").
+                            append("Для получения информации о Region по id введи 3;\n").
+                            append("Для обновления информации Region по id введи 4;\n").
+                            append("Для получения списков всех Region введи 5;\n").
+                            append("Для возврата в предыдущее меню введи 0;").toString());
             }
         }
     }

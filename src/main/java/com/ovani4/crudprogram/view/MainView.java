@@ -10,13 +10,14 @@ public class MainView {
     public MainView() {
         Scanner scan = new Scanner(System.in);
         int choice;
+        boolean bool = true;
         System.out.println("Программа запущена.");
         System.out.println(new StringBuilder().
                 append("Для работы с User введи 1;\n").
                 append("Для работы с Region введи 2;\n").
-                append("Для работы с Post введи 3;").
+                append("Для работы с Post введи 3;\n").
                 append("Для выхода введи 0;").toString());
-        while (true) {
+        while (bool) {
             choice = scan.nextInt();
             switch (choice) {
                 case 1:
@@ -30,6 +31,7 @@ public class MainView {
                     break;
                 case 0:
                     System.out.println("Закрытие программы...");
+                    bool = false;
                     break;
                 default:
                     System.out.println(new StringBuilder().
