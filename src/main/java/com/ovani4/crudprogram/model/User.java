@@ -5,13 +5,13 @@ import java.util.List;
 
 
 public class User {
-    private int id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private List<Post> posts;
     private Region region;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -25,6 +25,26 @@ public class User {
 
     public Region getRegion() {
         return region;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     @Override

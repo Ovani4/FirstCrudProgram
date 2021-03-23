@@ -82,7 +82,7 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
         String s;
         String[] sm;
         List<Post> posts = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH_POST))) {
             while ((s = br.readLine()) != null) {
                 Post p = new Post();
                 sm = s.split(" ");
