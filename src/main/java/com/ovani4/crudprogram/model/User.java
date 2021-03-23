@@ -11,22 +11,6 @@ public class User {
     private List<Post> posts;
     private Region region;
 
-    public User(String firstName, String lastName) {
-
-        this.id = generateId();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.posts = new ArrayList<>();
-        this.region = new Region();
-    }
-
-    private int generateId(){
-        int newId = 0;
-        //метод генерирования ID + проверка на уникальность
-        return newId;
-    }
-
-
     public int getId() {
         return id;
     }
@@ -43,4 +27,14 @@ public class User {
         return region;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", posts=" + posts +
+                ", region=" + region +
+                '}';
+    }
 }

@@ -13,7 +13,7 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public User getById(Long aLong) {
+    public User getById(Integer integer) {
         return null;
     }
 
@@ -28,7 +28,7 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Integer integer) {
 
     }
 

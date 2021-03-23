@@ -4,17 +4,25 @@ import main.java.com.ovani4.crudprogram.model.Post;
 import main.java.com.ovani4.crudprogram.model.Region;
 import main.java.com.ovani4.crudprogram.repository.PostRepository;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JavaIOPostRepositoryImpl implements PostRepository {
+    private final String FILE_PATH_POST = "src/data/post.txt";
     @Override
     public List<Post> getAll() {
-        return null;
+        return getListFromFile(FILE_PATH_POST);
     }
 
     @Override
-    public Post getById(Long aLong) {
-        return null;
+    public Post getById(Integer integer) {
+        return getListFromFile(FILE_PATH_POST).stream().
+                filter(post -> post.getId().equals(integer)).
+                findFirst().orElse(null);
     }
 
     @Override
@@ -28,13 +36,28 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
+    public void deleteById(Integer integer) {
 
     }
-
-
     private List<Post> getListFromFile(String filePath) {
-        return null;
+
+        String s;
+        String[] sm;
+        List<Post> posts = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            while ((s = br.readLine()) != null) {
+                Post p = new Post();
+                sm = s.split(" ");
+                p.setId(Integer.parseInt(sm[0]));
+                p.setContent(sm[1]);
+                p.setCreate(new Date());
+                p.setUpdate(new Date());
+                posts.add(p);
+            }
+        } catch (IOException e) {
+            System.err.println("error filling in the collection");
+        }
+        return posts;
     }
     // реализация для методов для создания и редактирование post.txt
 }
