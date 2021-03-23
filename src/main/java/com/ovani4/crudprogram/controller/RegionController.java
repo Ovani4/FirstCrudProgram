@@ -8,9 +8,6 @@ import java.util.List;
 
 public class RegionController {
     RegionRepository rr = new JavaIORegionRepositoryImpl();
-    public RegionController() {
-
-    }
 
     public List<Region> getAll() {
         return rr.getAll();

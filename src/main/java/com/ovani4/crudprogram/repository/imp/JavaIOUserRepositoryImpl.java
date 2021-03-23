@@ -37,5 +37,4 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
         return null;
     }
 
-    // реализация для методов для создания и редактирование user.txt
 }

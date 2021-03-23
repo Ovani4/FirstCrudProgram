@@ -4,15 +4,14 @@ import main.java.com.ovani4.crudprogram.model.Post;
 import main.java.com.ovani4.crudprogram.model.Region;
 import main.java.com.ovani4.crudprogram.repository.PostRepository;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class JavaIOPostRepositoryImpl implements PostRepository {
     private final String FILE_PATH_POST = "src/data/post.txt";
+
     @Override
     public List<Post> getAll() {
         return getListFromFile(FILE_PATH_POST);
@@ -27,18 +26,57 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
 
     @Override
     public Post save(Post post) {
-        return null;
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_POST))) {
+            getListFromFile(FILE_PATH_POST).add(post);
+            for (Post post1 : getListFromFile(FILE_PATH_POST)) {
+                bw.write(post1.getId().toString() + " "
+                        + post1.getContent() + " "
+                        + post1.getCreate().toString() + " "
+                        + post1.getUpdate().toString());
+            }
+        } catch (IOException e) {
+            System.err.println("error in create post" + e.toString());
+        }
+        return post;
     }
 
     @Override
     public Post update(Post post) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_POST))) {
+            getListFromFile(FILE_PATH_POST).stream().
+                    filter(post1 -> post1.getId().equals(post.getId())).
+                    forEach(post1 -> {
+                        post1.setContent(post.getContent());
+                        post1.setUpdate(new Date());
+                    });
+            for (Post post1 : getListFromFile(FILE_PATH_POST)) {
+                bw.write(post1.getId().toString() + " "
+                        + post1.getContent() + " "
+                        + post1.getCreate().toString() + " "
+                        + post1.getUpdate().toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public void deleteById(Integer integer) {
-
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_POST))) {
+            getListFromFile(FILE_PATH_POST).remove(getListFromFile(FILE_PATH_POST).
+                    stream().filter(post -> post.getId().equals(integer)));
+            for (Post post1 : getListFromFile(FILE_PATH_POST)) {
+                bw.write(post1.getId().toString() + " "
+                        + post1.getContent() + " "
+                        + post1.getCreate().toString() + " "
+                        + post1.getUpdate().toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
     private List<Post> getListFromFile(String filePath) {
 
         String s;

@@ -52,7 +52,7 @@ public class JavaIORegionRepositoryImpl implements RegionRepository {
     }
 
     @Override
-    public void deleteById(Integer integer) { //Нужно проверить, кажись файл будет тупо перезаписываться....
+    public void deleteById(Integer integer) {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_REGIONS))) {
             getListFromFile(FILE_PATH_REGIONS).remove(getListFromFile(FILE_PATH_REGIONS).
                     stream().filter(region -> region.getId().equals(integer)));
