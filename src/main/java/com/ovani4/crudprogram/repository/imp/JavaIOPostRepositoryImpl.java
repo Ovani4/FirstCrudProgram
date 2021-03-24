@@ -1,7 +1,6 @@
 package main.java.com.ovani4.crudprogram.repository.imp;
 
 import main.java.com.ovani4.crudprogram.model.Post;
-import main.java.com.ovani4.crudprogram.model.Region;
 import main.java.com.ovani4.crudprogram.repository.PostRepository;
 
 import java.io.*;
@@ -58,7 +57,7 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return post;
     }
 
     @Override
@@ -73,7 +72,7 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
                         + post1.getUpdate().toString());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("error in delete post" + e.toString());
         }
     }
 

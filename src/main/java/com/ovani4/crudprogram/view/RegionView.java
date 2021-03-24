@@ -26,7 +26,7 @@ public class RegionView {
                     Region region = new Region();
                     region.setId(rc.getAll().size() + 1);
                     System.out.println("Введи имя Region");
-                    region.setName(scan.nextLine()); // пока что без проверки
+                    region.setName(scan.nextLine());
                     System.out.println(rc.save(region).toString());
                     break;
                 case 2:
@@ -39,7 +39,7 @@ public class RegionView {
                     break;
                 case 4:
                     Region region1 = new Region();
-                    System.out.println("Введи id Region, в который необходимо внести изменения:"); // В процессе ============
+                    System.out.println("Введи id Region, в который необходимо внести изменения:");
                     region1.setId(scan.nextInt());
                     System.out.println("Введи новое имя Region:");
                     region1.setName(scan.nextLine());

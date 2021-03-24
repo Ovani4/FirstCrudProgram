@@ -33,7 +33,7 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
                         + user1.getRegion());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("error in create user " + e.toString());
         }
         return user;
     }
@@ -55,7 +55,7 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
                         + user1.getRegion());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println("error in update user " + e.toString());
         }
         return user;
     }
@@ -72,7 +72,7 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
                         + user.getRegion());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("error in delete user " + e.toString());
         }
     }
 
