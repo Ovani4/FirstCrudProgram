@@ -1,18 +1,10 @@
 package main.java.com.ovani4.crudprogram.repository.imp;
 
-import main.java.com.ovani4.crudprogram.controller.PostController;
-import main.java.com.ovani4.crudprogram.model.Post;
-import main.java.com.ovani4.crudprogram.model.Region;
 import main.java.com.ovani4.crudprogram.model.User;
-import main.java.com.ovani4.crudprogram.repository.PostRepository;
-import main.java.com.ovani4.crudprogram.repository.RegionRepository;
 import main.java.com.ovani4.crudprogram.repository.UserRepository;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class JavaIOUserRepositoryImpl implements UserRepository {
@@ -32,17 +24,56 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
-        return null;
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_USER))) {
+            getListFromFile(FILE_PATH_USER).add(user);
+            for (User user1 : getListFromFile(FILE_PATH_USER)) {
+                bw.write(user1.getId() + " "
+                        + user1.getFirstName() + " "
+                        + user1.getLastName() + " "
+                        + user1.getRegion());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override
     public User update(User user) {
-        return null;
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_USER))) {
+            getListFromFile(FILE_PATH_USER).stream().
+                    filter(user1 -> user1.getId().equals(user.getId())).
+                    forEach(user1 -> {
+                        user1.setFirstName(user.getFirstName());
+                        user1.setLastName(user.getLastName());
+                        user1.setRegion(user.getRegion());
+                    });
+            for (User user1 : getListFromFile(FILE_PATH_USER)) {
+                bw.write(user1.getId() + " "
+                        + user1.getFirstName() + " "
+                        + user1.getLastName() + " "
+                        + user1.getRegion());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return user;
     }
 
     @Override
     public void deleteById(Integer integer) {
-
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH_USER))) {
+            getListFromFile(FILE_PATH_USER).remove(getListFromFile(FILE_PATH_USER).stream().
+                    filter(user -> user.getId().equals(integer)));
+            for (User user : getListFromFile(FILE_PATH_USER)) {
+                bw.write(user.getId() + " "
+                        + user.getFirstName() + " "
+                        + user.getLastName() + " "
+                        + user.getRegion());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
