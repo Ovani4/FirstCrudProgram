@@ -7,6 +7,15 @@ public class Post {
     private String content;
     private Date create;
     private Date update;
+    private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getId() {
         return id;
@@ -47,6 +56,7 @@ public class Post {
                 ", content='" + content + '\'' +
                 ", create=" + create +
                 ", update=" + update +
+                ", userId=" + userId +
                 '}';
     }
 }

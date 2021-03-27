@@ -9,19 +9,27 @@ import java.util.List;
 public class PostController {
     PostRepository pr = new JavaIOPostRepositoryImpl();
 
-    public List<Post> getAll(){
+    public List<Post> getAll() {
         return pr.getAll();
     }
-    public Post getById(Integer integer){
+
+    public Post getById(Integer integer) {
         return pr.getById(integer);
     }
-    public Post save (Post post){
+
+    public Post save(Post post) {
         return pr.save(post);
     }
-    public Post update(Post post){
+
+    public Post update(Post post) {
         return pr.update(post);
     }
-    public void deleteById (Integer integer){
+
+    public void deleteById(Integer integer) {
         pr.deleteById(integer);
+    }
+
+    public static List<Post> getUserPosts(Integer integer) {
+        return getUserPosts(integer);
     }
 }

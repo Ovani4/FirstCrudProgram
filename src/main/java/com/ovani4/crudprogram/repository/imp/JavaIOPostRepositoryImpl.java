@@ -29,6 +29,7 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
             getListFromFile(FILE_PATH_POST).add(post);
             for (Post post1 : getListFromFile(FILE_PATH_POST)) {
                 bw.write(post1.getId().toString() + " "
+                        + post1.getUserId().toString() + " "
                         + post1.getContent() + " "
                         + post1.getCreate().toString() + " "
                         + post1.getUpdate().toString());
@@ -76,6 +77,13 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
         }
     }
 
+    @Override
+    public List<Post> getUserPosts(Integer integer) {
+        List<Post> postsUser = new ArrayList<>();
+        getListFromFile(FILE_PATH_POST).stream().filter(post -> post.getUserId().equals(integer)).forEach(post -> postsUser.add(post));
+        return postsUser;
+    }
+
     private List<Post> getListFromFile(String filePath) {
 
         String s;
@@ -96,5 +104,5 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
         }
         return posts;
     }
-    // реализация для методов для создания и редактирование post.txt
+
 }

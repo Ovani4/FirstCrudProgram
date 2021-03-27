@@ -32,6 +32,7 @@ public class PostView {
                     Date date = new Date();
                     post.setCreate(date);
                     post.setUpdate(date);
+                    pc.save(post);
                     break;
                 case 2:
                     System.out.println("Введи id Post который надо удалить: ");
@@ -47,6 +48,7 @@ public class PostView {
                     post1.setId(scan.nextInt());
                     System.out.println("Введи новый Post:");
                     post1.setContent(scan.nextLine());
+                    pc.update(post1);
                     break;
                 case 5:
                     System.out.println(pc.getAll().toString());
