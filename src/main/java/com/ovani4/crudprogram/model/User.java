@@ -8,8 +8,8 @@ public class User {
     private Integer id;
     private String firstName;
     private String lastName;
-    private List<Post> posts;
-    private Region region;
+    private List<Integer> posts;
+    private Integer region;
 
     public Integer getId() {
         return id;
@@ -23,7 +23,7 @@ public class User {
         return lastName;
     }
 
-    public Region getRegion() {
+    public Integer getRegion() {
         return region;
     }
 
@@ -39,11 +39,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(List<Integer> posts) {
         this.posts = posts;
     }
 
-    public void setRegion(Region region) {
+    public void setRegion(Integer region) {
         this.region = region;
     }
 

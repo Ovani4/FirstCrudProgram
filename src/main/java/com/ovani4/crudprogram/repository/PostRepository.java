@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface PostRepository extends GenericRepository <Post, Integer>{
 
-    List<Post> getUserPosts(Integer integer);
+    List<Integer> getUserPosts(Integer integer);
 }

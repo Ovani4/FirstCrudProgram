@@ -29,7 +29,7 @@ public class PostController {
         pr.deleteById(integer);
     }
 
-    public static List<Post> getUserPosts(Integer integer) {
+    public static List<Integer> getUserPosts(Integer integer) {
         return getUserPosts(integer);
     }
 }
