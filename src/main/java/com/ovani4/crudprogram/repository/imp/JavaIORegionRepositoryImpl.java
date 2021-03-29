@@ -9,7 +9,7 @@ import java.util.List;
 
 
 public class JavaIORegionRepositoryImpl implements RegionRepository {
-    private final String FILE_PATH_REGIONS = "src/data/regions.txt";
+    private final String FILE_PATH_REGIONS = "src/main/java/com/ovani4/crudprogram/data/regions.txt";
 
     @Override
     public List<Region> getAll() {

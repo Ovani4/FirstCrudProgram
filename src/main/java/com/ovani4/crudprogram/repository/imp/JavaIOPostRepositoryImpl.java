@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 public class JavaIOPostRepositoryImpl implements PostRepository {
-    private final String FILE_PATH_POST = "src/data/post.txt";
+    private final String FILE_PATH_POST = "src/main/java/com/ovani4/crudprogram/data/post.txt";
 
     @Override
     public List<Post> getAll() {

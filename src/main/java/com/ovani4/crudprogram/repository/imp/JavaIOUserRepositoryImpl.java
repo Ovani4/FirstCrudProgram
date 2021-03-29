@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JavaIOUserRepositoryImpl implements UserRepository {
-    private final String FILE_PATH_USER = "src/data/users.txt";
+    private final String FILE_PATH_USER = "src/main/java/com/ovani4/crudprogram/data/users.txt";
 
     @Override
     public List<User> getAll() {
