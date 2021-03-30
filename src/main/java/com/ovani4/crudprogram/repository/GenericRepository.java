@@ -11,7 +11,7 @@ public interface GenericRepository <T , ID>{
     T update(T t);
     void deleteById(ID id);
 
-    private List<T> getListFromFile(String filePath) {
+    private List<T> getListFromFile() {
         return null;
     }
 }

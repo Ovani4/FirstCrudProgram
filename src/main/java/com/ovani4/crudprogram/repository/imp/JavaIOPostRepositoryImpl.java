@@ -77,20 +77,12 @@ public class JavaIOPostRepositoryImpl implements PostRepository {
         }
     }
 
-    @Override
-    public List<Integer> getUserPosts(Integer integer) {
-        List<Integer> postsUser = new ArrayList<>();
-        getListFromFile(FILE_PATH_POST).stream().filter(post -> post.getUserId().
-                equals(integer)).forEach(post -> postsUser.add(post.getUserId()));
-        return postsUser;
-    }
-
     private List<Post> getListFromFile(String filePath) {
 
         String s;
         String[] sm;
         List<Post> posts = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH_POST))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             while ((s = br.readLine()) != null) {
                 Post p = new Post();
                 sm = s.split(" ");

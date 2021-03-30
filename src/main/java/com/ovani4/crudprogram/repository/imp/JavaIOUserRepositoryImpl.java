@@ -1,6 +1,9 @@
 package main.java.com.ovani4.crudprogram.repository.imp;
 
+import main.java.com.ovani4.crudprogram.model.Region;
 import main.java.com.ovani4.crudprogram.model.User;
+import main.java.com.ovani4.crudprogram.repository.PostRepository;
+import main.java.com.ovani4.crudprogram.repository.RegionRepository;
 import main.java.com.ovani4.crudprogram.repository.UserRepository;
 
 import java.io.*;
@@ -76,12 +79,27 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
         }
     }
 
+    @Override
+    public List<Integer> getUserPosts(Integer integer) {
+        List<Integer> postsUser = new ArrayList<>();
+        PostRepository pr = new JavaIOPostRepositoryImpl();
+        pr.getAll().stream().filter(post -> post.getUserId().
+                equals(integer)).forEach(post -> postsUser.add(post.getUserId()));
+        return postsUser;
+    }
+
+    @Override
+    public Integer getUserRegion(Integer integer) {
+        RegionRepository rr = new JavaIORegionRepositoryImpl();
+        Region region = (Region) rr.getAll().stream().filter(region1 -> region1.getId().equals(integer));
+        return region.getId();
+    }
 
     private List<User> getListFromFile(String filePath) {
         String s;
         String[] sm;
         List<User> users = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_PATH_USER))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             while ((s = br.readLine()) != null) {
                 User u = new User();
                 sm = s.split(" ");
@@ -95,4 +113,6 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
         return users;
     }
 
+
 }
+
