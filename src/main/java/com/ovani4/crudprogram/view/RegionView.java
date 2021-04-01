@@ -60,6 +60,7 @@ public class RegionView {
                             append("Для обновления информации Region по id введи 4;\n").
                             append("Для получения списков всех Region введи 5;\n").
                             append("Для возврата в предыдущее меню введи 0;").toString());
+                    break;
             }
         }
     }

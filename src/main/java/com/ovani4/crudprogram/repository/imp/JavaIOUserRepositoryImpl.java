@@ -12,6 +12,8 @@ import java.util.List;
 
 public class JavaIOUserRepositoryImpl implements UserRepository {
     private final String FILE_PATH_USER = "src/main/java/com/ovani4/crudprogram/data/users.txt";
+    private final PostRepository pr = new JavaIOPostRepositoryImpl();
+    private final RegionRepository rr = new JavaIORegionRepositoryImpl();
 
     @Override
     public List<User> getAll() {
@@ -82,7 +84,6 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
     @Override
     public List<Integer> getUserPosts(Integer integer) {
         List<Integer> postsUser = new ArrayList<>();
-        PostRepository pr = new JavaIOPostRepositoryImpl();
         pr.getAll().stream().filter(post -> post.getUserId().
                 equals(integer)).forEach(post -> postsUser.add(post.getUserId()));
         return postsUser;
@@ -90,7 +91,6 @@ public class JavaIOUserRepositoryImpl implements UserRepository {
 
     @Override
     public Integer getUserRegion(Integer integer) {
-        RegionRepository rr = new JavaIORegionRepositoryImpl();
         Region region = (Region) rr.getAll().stream().filter(region1 -> region1.getId().equals(integer));
         return region.getId();
     }

@@ -25,7 +25,7 @@ public class UserView {
 
         while (bool){
             choice = scan.nextInt();
-            switch (choice){
+            switch (choice) {
                 case 1:
                     User user = new User();
                     Integer userId = uc.getAll().size() + 1;
@@ -78,6 +78,7 @@ public class UserView {
                             append("Для обновления информации User по id введи 4;\n").
                             append("Для получения списков всех User введи 5;\n").
                             append("Для возврата в предыдущее меню введи 0;").toString());
+                    break;
             }
         }
     }
